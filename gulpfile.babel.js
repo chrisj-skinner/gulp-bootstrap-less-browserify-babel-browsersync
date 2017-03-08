@@ -39,7 +39,7 @@ gulp.task('minify-css', ['less'], function() {
         }))
 });
 
-// Concat Minify Browserify SourceMap JS 
+// Concat Minify Browserify SourceMap JS
 gulp.task('minify-js', function() {
     return browserify('js/theme.js')
         .transform('babelify')
@@ -68,7 +68,6 @@ gulp.task('copy', function() {
 // Copy fonts over
 gulp.task('fonts', ['copy'], function(){
     return gulp.src([
-        'vendor/bootstrap/fonts/**',
         'vendor/font-awesome/fonts/**'
         ])
     .pipe(gulp.dest('fonts'))
@@ -106,12 +105,10 @@ gulp.task('setup', ['fonts']);
 // Dev task with browserSync and watch
 gulp.task('dev', ['browserSync', 'minify-css', 'minify-js'], function() {
     // Watch file changes
-    gulp.watch(['less/*.less', 'vendor/bootstrap/less/bootstrap.less'], ['minify-css']);
-    gulp.watch(['js/*.js', 'vendor/bootstrap/dist/js/npm.js', '!js/*.min.js'], ['minify-js'] );
+    gulp.watch(['less/*.less'], ['minify-css']);
+    gulp.watch(['js/*.js', '!js/*.min.js'], ['minify-js'] );
     // Reloads the browser on file change
     gulp.watch('*.html', browserSync.reload);
-    gulp.watch('css/*.css', browserSync.reload);
-    gulp.watch('js/main.min.js', browserSync.reload);
 });
 
 // Default build task with dist creation

@@ -109,7 +109,7 @@ gulp.task('setup', ['fonts']);
 gulp.task('dev', ['browserSync', 'minify-css', 'minify-js'], function() {
    // Watch file changes
    gulp.watch(['less/*.less', 'vendor/bootstrap/less/bootstrap.less'], ['minify-css'], browserSync.reload);
-   gulp.watch(['js/*/*.js', 'vendor/bootstrap/dist/js/npm.js', '!js/*.min.js'], ['minify-js'] );
+   gulp.watch(['js/*/*.js', 'vendor/bootstrap/dist/js/npm.js', '!js/*.min.js'], ['minify-js'], browserSync.reload );
    // Reloads the browser on file change
    gulp.watch('*.html', browserSync.reload);
 });
